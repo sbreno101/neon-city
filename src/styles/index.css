@@ -1,0 +1,166 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Orbitron', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Rajdhani', ui-sans-serif, system-ui, sans-serif;
+  --color-night: #060b24;
+  --color-deep: #18002e;
+  --color-neon-purple: #a020f0;
+  --color-neon-pink: #ff2bd6;
+  --color-neon-blue: #00bfff;
+  --color-neon-cyan: #00ffff;
+  --color-glow: #f0f8ff;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #0b0420;
+  color: var(--color-glow);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+canvas {
+  display: block;
+  outline: none;
+}
+
+/* ---------------------------------------------------------------- title */
+.neon-title {
+  color: #fdf1ff;
+  text-shadow:
+    0 0 6px rgba(255, 43, 214, 0.9),
+    0 0 18px rgba(255, 43, 214, 0.55),
+    0 0 42px rgba(160, 32, 240, 0.55);
+}
+
+/* ---------------------------------------------------------------- glass */
+.glass {
+  background: linear-gradient(180deg, rgba(24, 0, 46, 0.62), rgba(6, 11, 36, 0.68));
+  border: 1px solid rgba(160, 32, 240, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 255, 0.04) inset,
+    0 10px 40px -10px rgba(160, 32, 240, 0.45);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+/* ---------------------------------------------------------------- buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 9px;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  color: rgba(240, 248, 255, 0.72);
+  transition:
+    color 160ms,
+    background-color 160ms,
+    box-shadow 160ms;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+}
+.btn:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 2px;
+}
+.btn-active {
+  color: var(--color-neon-cyan);
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 255, 0.45),
+    0 0 14px -2px rgba(0, 255, 255, 0.45);
+}
+
+/* ---------------------------------------------------------------- inputs */
+.neon-range {
+  appearance: none;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-neon-purple), var(--color-neon-pink), var(--color-neon-cyan));
+  cursor: pointer;
+}
+.neon-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 0 10px var(--color-neon-pink);
+}
+.neon-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 0 10px var(--color-neon-pink);
+}
+.neon-check {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-neon-pink);
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------- loader */
+.loader {
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(255, 43, 214, 0.35), transparent 60%),
+    linear-gradient(180deg, #05010f 0%, #18002e 55%, #3a0a5a 100%);
+}
+.loader-grid {
+  position: absolute;
+  inset: 55% -50% -10% -50%;
+  background-image:
+    linear-gradient(rgba(255, 43, 214, 0.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 43, 214, 0.45) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(400px) rotateX(62deg);
+  transform-origin: top center;
+  animation: grid-scroll 2.4s linear infinite;
+  mask-image: linear-gradient(180deg, transparent, #000 45%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 45%);
+}
+@keyframes grid-scroll {
+  to {
+    background-position: 0 48px;
+  }
+}
+.loader-dots::after {
+  content: '';
+  animation: dots 1.4s steps(4) infinite;
+}
+@keyframes dots {
+  0% {
+    content: '';
+  }
+  25% {
+    content: '.';
+  }
+  50% {
+    content: '..';
+  }
+  75% {
+    content: '...';
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-grid,
+  .loader-dots::after {
+    animation: none;
+  }
+}

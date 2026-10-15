@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>NEON CITY — metrópole synthwave 3D</title>
+    <meta
+      name="description"
+      content="NEON CITY: uma metrópole futurista procedural em 3D, renderizada em tempo real no navegador com React Three Fiber."
+    />
+    <meta name="theme-color" content="#18002e" />
+    <meta property="og:title" content="NEON CITY" />
+    <meta property="og:description" content="Metrópole synthwave procedural em 3D, em tempo real no navegador." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <style>
+      /* Instant boot screen shown before the JS bundle is parsed. */
+      html, body, #root { height: 100%; margin: 0; background: #0b0420; }
+      .boot { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: radial-gradient(ellipse at 50% 120%, rgba(255,43,214,.35), transparent 60%), linear-gradient(180deg,#05010f 0%,#18002e 55%,#3a0a5a 100%);
+        font-family: 'Orbitron', system-ui, sans-serif; color: #fdf1ff; }
+      .boot h1 { margin: 0; font-size: clamp(2.25rem, 6vw, 3.75rem); letter-spacing: .35em; font-weight: 700;
+        text-shadow: 0 0 6px rgba(255,43,214,.9), 0 0 18px rgba(255,43,214,.55), 0 0 42px rgba(160,32,240,.55); }
+      .boot div { margin-top: 2rem; width: 14rem; height: 3px; border-radius: 9999px; background: rgba(255,255,255,.1); overflow: hidden; }
+      .boot div::after { content: ''; display: block; height: 100%; width: 12%; background: linear-gradient(90deg,#a020f0,#ff2bd6); }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot" role="status"><h1>NEON CITY</h1><div></div></div>
+    </div>
+    <noscript>NEON CITY precisa de JavaScript e WebGL 2 para renderizar a cidade.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
